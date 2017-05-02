@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 /**
- * Created by federico on 02/05/17.
+ * @author federico on 02/05/17.
+ * @email fede.larregle@gmail.com
  */
 public class Locators extends By{
 

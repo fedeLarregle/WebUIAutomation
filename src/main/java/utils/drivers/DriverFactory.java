@@ -6,7 +6,9 @@ package utils.drivers;
  */
 public class DriverFactory {
 
-    public static final DriverFactory instance;
+    private static final DriverFactory instance;
+    private Location location;
+    private Drivers browser;
 
     static {
         instance = new DriverFactory();
@@ -16,9 +18,22 @@ public class DriverFactory {
 
     public static DriverFactory getInstance() { return instance; }
 
+    public DriverFactory setBrowser(Drivers browser) {
+        this.browser = browser;
+        return this;
+    }
 
-    private enum Drivers {
+    public DriverFactory setBrowserLocation(Location location) {
+        this.location = location;
+        return this;
+    }
+
+    public enum Drivers {
         CHROME, FIREFOX, EXPLORER
+    }
+
+    public enum Location {
+        LOCAL, REMOTE
     }
 
 }

@@ -1,5 +1,3 @@
-import pages.GenericPage;
-import pages.Page;
 
 /**
  * @author federico on 02/05/17.
@@ -7,7 +5,6 @@ import pages.Page;
  */
 public class App {
     public static void main(String... args) {
-
 
     }
 }

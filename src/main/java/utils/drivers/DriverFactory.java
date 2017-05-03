@@ -14,7 +14,7 @@ public class DriverFactory {
 
     private DriverFactory() {}
 
-    public DriverFactory getInstance() { return instance; }
+    public static DriverFactory getInstance() { return instance; }
 
 
     private enum Drivers {

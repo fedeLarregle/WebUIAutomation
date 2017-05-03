@@ -22,7 +22,7 @@ public class Locators extends By{
 
     }
 
-    public Locators getInstance() { return instance; }
+    public static Locators getInstance() { return instance; }
 
     @Override
     public List<WebElement> findElements(SearchContext searchContext) {

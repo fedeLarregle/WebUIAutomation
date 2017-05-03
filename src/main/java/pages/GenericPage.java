@@ -1,12 +1,23 @@
 package pages;
 
+import org.openqa.selenium.By;
+
+import java.util.List;
+
 /**
- * Created by federico on 02/05/17.
+ * @author federico on 02/05/17.
+ * @email fede.larregle@gmail.com
  */
-public class GenericPage implements Page<GenericPage> {
+public class GenericPage<B extends By> extends Page<B> {
+
 
     @Override
-    public GenericPage createInstance() {
+    public B GetElement() {
+        return null;
+    }
+
+    @Override
+    public List<B> getElements() {
         return null;
     }
 }

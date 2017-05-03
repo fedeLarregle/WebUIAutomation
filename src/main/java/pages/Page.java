@@ -1,10 +1,11 @@
 package pages;
 
+import org.openqa.selenium.By;
+
 /**
- * @author federico on 02/05/17.
+ * @author federico on 03/05/17.
  * @email fede.larregle@gmail.com
  */
-public interface Page <P extends Page> {
+public abstract class Page<B extends By> implements PageInteface<B>{
 
-    P createInstance();
 }

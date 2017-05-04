@@ -1,12 +1,16 @@
 package utils.file.readers;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -54,10 +58,42 @@ public class ExcelReader {
 
     public static ExcelReader getInstace() { return instance; }
 
-    public <O extends Object> List<O> getRow() {
-
-        return null;
+    public Row getRow() {
+        Sheet sheet = workbook.getSheetAt(0);
+        return sheet.getRow(0);
     }
+
+    public List<Row> getRows() {
+        Sheet sheet = getExcelSheet();
+        return iterateSheet(sheet);
+    }
+
+    public List<Row> getRowsFromSheet(String name) {
+        Sheet sheet = getExcelSheet(name);
+        return iterateSheet(sheet);
+    }
+
+    public List<Row> getRowsFromSheet(int i) {
+        Sheet sheet = getExcelSheet(i);
+        return iterateSheet(sheet);
+    }
+
+    private List<Row> iterateSheet(final Sheet sheet) {
+
+        List<Row> rows = new ArrayList<>();
+        Iterator<Row> iterator = sheet.iterator();
+
+        while ( iterator.hasNext() ) {
+            rows.add(iterator.next());
+        }
+        return rows;
+    }
+
+    public Sheet getExcelSheet() { return getExcelSheet(0); }
+
+    public Sheet getExcelSheet(int i) { return workbook.getSheetAt(i); }
+
+    public Sheet getExcelSheet(String name) { return workbook.getSheet(name); }
 
     private Object getCellValue(Cell cell) {
         switch ( cell.getCellType() ) {

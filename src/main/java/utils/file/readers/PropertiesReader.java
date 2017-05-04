@@ -2,6 +2,9 @@ package utils.file.readers;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -50,6 +53,14 @@ public class PropertiesReader {
 
     public String getPropertiesValue(String key) {
         return properties.getProperty(key);
+    }
+
+    public Map<String, String> getProperties(List<String> keys) {
+        Map<String, String> propertiesMap = new HashMap<>();
+        for ( String key : keys ) {
+            propertiesMap.put(key, properties.getProperty(key));
+        }
+        return propertiesMap;
     }
 
 }

@@ -1,11 +1,7 @@
 package utils.elements;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.Rectangle;
-import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -14,91 +10,29 @@ import java.util.List;
  * @author federico on 03/05/17.
  * @email fede.larregle@gmail.com
  */
-public class Elements implements WebElement {
+public class Elements {
 
+    private final WebDriver driver;
 
-    @Override
-    public void click() {
-
+    public Elements(WebDriver driver) {
+        this.driver = driver;
     }
 
-    @Override
-    public void submit() {
+    /**
+     * Returns a WebElement identified by a given {@link By}
+     * @param b
+     * @param <B>
+     * @return
+     */
+    public <B extends By> WebElement getElement(B b) { return this.driver.findElement(b); }
 
-    }
+    /**
+     * Returns a List<WebElement> identified by a given {@link By}
+     * @param b
+     * @param <B>
+     * @return
+     */
+    public <B extends By> List<WebElement> getElements(B b) { return this.driver.findElements(b); }
 
-    @Override
-    public void sendKeys(CharSequence... charSequences) {
 
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-    @Override
-    public String getTagName() {
-        return null;
-    }
-
-    @Override
-    public String getAttribute(String s) {
-        return null;
-    }
-
-    @Override
-    public boolean isSelected() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
-
-    @Override
-    public String getText() {
-        return null;
-    }
-
-    @Override
-    public List<WebElement> findElements(By by) {
-        return null;
-    }
-
-    @Override
-    public WebElement findElement(By by) {
-        return null;
-    }
-
-    @Override
-    public boolean isDisplayed() {
-        return false;
-    }
-
-    @Override
-    public Point getLocation() {
-        return null;
-    }
-
-    @Override
-    public Dimension getSize() {
-        return null;
-    }
-
-    @Override
-    public Rectangle getRect() {
-        return null;
-    }
-
-    @Override
-    public String getCssValue(String s) {
-        return null;
-    }
-
-    @Override
-    public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-        return null;
-    }
 }

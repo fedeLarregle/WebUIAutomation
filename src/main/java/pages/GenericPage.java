@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import utils.elements.Elements;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,15 +13,22 @@ import java.util.List;
  */
 public class GenericPage {
 
-    private GenericPage page;
+    private final static GenericPage instance;
     private final List<Elements> elements;
 
-    private GenericPage(WebDriver driver) {
+    static {
+        instance = new GenericPage();
+    }
+
+    private GenericPage() {
         elements = new ArrayList<>();
     }
 
-    public synchronized GenericPage createInstace(WebDriver driver) {
-
-        return page == null ? new GenericPage(driver) : page;
+    public static GenericPage createInstace() {
+        return instance;
     }
+
+    public void addElement(Elements element) { elements.add(element); }
+
+    public List<Elements> getElements() { return Collections.unmodifiableList(elements); }
 }
